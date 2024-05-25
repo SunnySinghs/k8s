@@ -13,6 +13,10 @@ spec:
       labels:
         component: mongodb
     spec:
+      volumes:
+        - name: mongodb-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim
       containers:
         - name: mongodb
           image: mongodb
@@ -30,5 +34,5 @@ spec:
                   name: mongodb-secret
                   key: mongo-password
           volumeMounts:
-            - name: mongodb-persistent-volume-claim
+            - name: mongodb-storage
               mountPath: mongodb/data
