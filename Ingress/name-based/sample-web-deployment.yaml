@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: web
+          image: gcr.io/google-samples/hello-app:1.0
+          ports:
+            - containerPort: 8080          
+              protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web2
+spec:
+  selector:
+    matchLabels:
+      component: web2
+  template:
+    metadata:
+      labels:
+        component: web2
+    spec:
+      containers:
+        - name: web2
+          image: gcr.io/google-samples/hello-app:2.0
+          ports:
+            - containerPort: 8080          
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    component: web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web2
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    component: web2
