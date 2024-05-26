@@ -13,10 +13,6 @@ spec:
       labels:
         component: mongodb
     spec:
-      volumes:
-        - name: mongodb-storage
-          persistentVolumeClaim:
-            claimName: database-persistent-volume-claim
       containers:
         - name: mongodb
           image: mongodb
@@ -34,5 +30,14 @@ spec:
                   name: mongodb-secret
                   key: mongo-password
           volumeMounts:
-            - name: mongodb-storage
+            - name: pvc
               mountPath: mongodb/data
+  volumeClaimTemplates:
+    metadata:
+      name: pvc
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi

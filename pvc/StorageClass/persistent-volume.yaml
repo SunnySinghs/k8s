@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: persistent-volume
+spec:
+  capcity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/disks      # local storage
+  pesistantVolumneReclaimPolicy: Retain
