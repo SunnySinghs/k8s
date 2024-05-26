@@ -33,11 +33,11 @@ spec:
             - name: pvc
               mountPath: mongodb/data
   volumeClaimTemplates:
-    metadata:
-      name: pvc
-    spec:
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 2Gi
+    - metadata:
+        name: pvc
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 2Gi
