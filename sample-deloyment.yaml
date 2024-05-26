@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-rest-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: node-rest
+  template:
+    metadata:
+      labels:
+        component: node-rest
+    spec:
+      containers:
+        - name: node-rest-container
+          image: gaganshera/nagp-2021-node-devops-app
+          ports:
+            - name: http 
+              containerPort: 3010          
+              protocol: TCP
