@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-web
+spec:
+  selector:
+    matchLabels:
+      component: ingress-web
+  template:
+    metadata:
+      labels:
+        component: ingress-web
+    spec:
+      containers:
+        - name: ingress-web
+          image: gcr.io/google-samples/hello-app:1.0
+          ports:
+            - containerPort: 8080          
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-web
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    component: ingress-web
