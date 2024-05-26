@@ -12,8 +12,8 @@ spec:
         backend:
           service:
             name: web
-              port:
-                number: 8080
+            port:
+              number: 8080
       - path: /svc2
         pathType: Prefix
         backend:
