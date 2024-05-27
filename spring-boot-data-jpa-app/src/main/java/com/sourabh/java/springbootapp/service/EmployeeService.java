@@ -2,7 +2,8 @@ package com.sourabh.java.springbootapp.service;
 
 import java.util.List;
 
-import com.sourabh.java.springbootapp.entity.Employee;
+import com.sourabh.java.springbootapp.model.Employee;
+
 
 public interface EmployeeService {
 

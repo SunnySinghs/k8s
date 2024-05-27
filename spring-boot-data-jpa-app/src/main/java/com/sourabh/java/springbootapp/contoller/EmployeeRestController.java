@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sourabh.java.springbootapp.entity.Employee;
+import com.sourabh.java.springbootapp.model.Employee;
 import com.sourabh.java.springbootapp.service.EmployeeService;
 
 @RestController
@@ -42,7 +42,6 @@ public class EmployeeRestController {
 	@RequestMapping(path = "/employees", method = RequestMethod.POST)
 	public Employee save(@RequestBody Employee employee){
 		
-		employee.setId(0);
 		employeeService.save(employee);
 		
 		return employee;
