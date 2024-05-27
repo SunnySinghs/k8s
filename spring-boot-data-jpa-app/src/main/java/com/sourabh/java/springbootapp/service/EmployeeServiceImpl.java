@@ -21,11 +21,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 		this.employeeRepository = employeeDao;
 	}
 	@Override
-	public List<Employee> findAll() {
-		List<EmployeeEntity> list = employeeRepository.findAll();
-		
+	public List<Employee> findAll() {		
 		List<Employee> employees = new ArrayList<>();
 		for(EmployeeEntity entity: employeeRepository.findAll()) {
+			System.out.println(entity);
 			Employee employee = new Employee();
 			employee.setEmail(entity.getEmail());
 			employee.setFirstName(entity.getFirstName());
@@ -57,6 +56,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void save(Employee employee) {
+		System.out.println(employee);
 		EmployeeEntity entity = new EmployeeEntity();
 		entity.setEmail(employee.getEmail());
 		entity.setFirstName(employee.getFirstName());
