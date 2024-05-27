@@ -58,6 +58,6 @@ spec:
       target:
         type: Utilization
         averageUtilization: 1
-  behaviour:
+  behavior:
     scaleDown:
       stabilizationWindowSeconds: 5
