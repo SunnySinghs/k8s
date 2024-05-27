@@ -19,3 +19,33 @@ spec:
             - name: http 
               containerPort: 3010          
               protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-rest-service-np
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 3010
+      targetPort: 3010
+      nodePort: 30080
+  selector:
+    component: node-rest
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: node-app-rest-api-autoscale
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: node-app-rest-api
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 10
