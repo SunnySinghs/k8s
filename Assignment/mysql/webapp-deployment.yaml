@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: your-springboot-image
+        image: sourabhsingh/sprint-boot-app.jar
         ports:
         - containerPort: 8080
         env:
