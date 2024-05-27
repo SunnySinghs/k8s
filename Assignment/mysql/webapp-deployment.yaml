@@ -16,7 +16,9 @@ spec:
       - name: springboot-app
         image: sourabhsingh/sprint-boot-app.jar
         ports:
-        - containerPort: 8080
+        - name: http
+          containerPort: 8080
+          protocol: TCP
         env:
         - name: SPRING_DATASOURCE_URL
           valueFrom:
@@ -43,7 +45,6 @@ spec:
   selector:
     app: springboot-app
   ports:
-    - protocol: TCP
-      port: 8080
+    - port: 8080
       targetPort: 8080
       nodePort: 30100
