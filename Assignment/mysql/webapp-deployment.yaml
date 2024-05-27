@@ -41,7 +41,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    component: springboot-app-service
+    component: springboot-app
   ports:
     - protocol: TCP
       port: 8080
