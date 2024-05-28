@@ -70,8 +70,8 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: springboot-app
-  minReplicas: 1
-  maxReplicas: 5
+  minReplicas: 3
+  maxReplicas: 6
   metrics:
   - type: Resource
     resource:
