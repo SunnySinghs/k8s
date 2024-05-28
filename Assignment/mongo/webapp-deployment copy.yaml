@@ -17,13 +17,6 @@ spec:
       containers:
       - name: webapp
         image: nanajanashia/k8s-demo-app:v1.0
-        resources:
-          requests:
-            cpu: "100m"
-            memory: "128Mi"
-          limits:
-            cpu: "500m"
-            memory: "256Mi"
         ports:
         - containerPort: 3000
         env:
@@ -56,25 +49,3 @@ spec:
       port: 3000
       targetPort: 3000
       nodePort: 30100
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: webapp-autoscale
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: webapp
-  minReplicas: 1
-  maxReplicas: 3
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 1
-  behavior:
-    scaleDown:
-      stabilizationWindowSeconds: 5

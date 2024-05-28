@@ -67,5 +67,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeRepository.deleteById(id);
 
 	}
+	
+	@Override
+	public long load(int id) {
+		return fib(id);
+	}
+	
+	public long fib(int n) {
+		if (n < 2)
+			return 1;
+		return fib(n - 2)+ fib(n - 1);
+	}
 
 }

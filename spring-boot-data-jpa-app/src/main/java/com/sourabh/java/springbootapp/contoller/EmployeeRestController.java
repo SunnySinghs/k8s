@@ -61,4 +61,9 @@ public class EmployeeRestController {
 		return "Deleted EmployeeId is:"+id;
 	}
 	
+	@RequestMapping("/load/{id}")
+	public long load(@PathVariable int id){
+		return employeeService.load(id);
+	}
+	
 }
