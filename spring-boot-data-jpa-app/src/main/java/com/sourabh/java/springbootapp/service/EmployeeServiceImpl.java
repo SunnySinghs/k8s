@@ -27,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			System.out.println(entity);
 			Employee employee = new Employee();
 			employee.setEmail(entity.getEmail());
-			employee.setName(employee.getName());
+			employee.setName(entity.getName());
 			employees.add(employee);
 		}
 		
