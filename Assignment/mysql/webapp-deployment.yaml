@@ -22,11 +22,11 @@ spec:
         image: sourabhsingh/sprint-boot-app
         resources:
           requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
             cpu: "500m"
             memory: "512Mi"
-          limits:
-            cpu: "1000m"
-            memory: "1024Mi"
         ports:
         - name: http
           containerPort: 8080
