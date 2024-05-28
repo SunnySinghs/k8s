@@ -4,29 +4,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Employee {
 	
-	@JsonProperty("first_name")
-	private String firstName;
-	
-	@JsonProperty("last_name")
-	private String lastName;
+	@JsonProperty("name")
+	private String name;
 	
 	@JsonProperty("email")
 	private String email;
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -39,12 +28,8 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+		return "Employee [name=" + name + ", email=" + email + "]";
 	}
-	
-	
-
-	
 	
 	
 }

@@ -27,8 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			System.out.println(entity);
 			Employee employee = new Employee();
 			employee.setEmail(entity.getEmail());
-			employee.setFirstName(entity.getFirstName());
-			employee.setLastName(entity.getLastName());
+			employee.setName(employee.getName());
 			employees.add(employee);
 		}
 		
@@ -44,8 +43,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		if(result.isPresent()) {
 			entity = result.get();
 			employee.setEmail(entity.getEmail());
-			employee.setFirstName(entity.getFirstName());
-			employee.setLastName(entity.getLastName());
+			employee.setName(entity.getName());
 		}else {
 			throw new RuntimeException("Exception in getting Employee."); 
 		}
@@ -59,8 +57,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		System.out.println(employee);
 		EmployeeEntity entity = new EmployeeEntity();
 		entity.setEmail(employee.getEmail());
-		entity.setFirstName(employee.getFirstName());
-		entity.setLastName(employee.getLastName());
+		entity.setName(employee.getName());
 		employeeRepository.save(entity);
 
 	}
