@@ -15,6 +15,13 @@ spec:
       containers:
       - name: springboot-app
         image: sourabhsingh/sprint-boot-app.jar
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
         ports:
         - name: http
           containerPort: 8080
@@ -48,3 +55,25 @@ spec:
     - port: 8080
       targetPort: 8080
       nodePort: 30100
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: webapp-autoscale
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: springboot-app
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 1
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 5
