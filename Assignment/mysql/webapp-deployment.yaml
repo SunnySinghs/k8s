@@ -22,10 +22,10 @@ spec:
         image: sourabhsingh/sprint-boot-app
         resources:
           requests:
-            cpu: "400m"
+            cpu: "200m"
             memory: "256Mi"
           limits:
-            cpu: "600m"
+            cpu: "500m"
             memory: "512Mi"
         ports:
         - name: http
