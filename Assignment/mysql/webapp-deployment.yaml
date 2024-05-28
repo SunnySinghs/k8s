@@ -7,6 +7,11 @@ spec:
   selector:
     matchLabels:
       app: springboot-app
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     metadata:
       labels:
@@ -14,10 +19,10 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: sourabhsingh/sprint-boot-app:1.0
+        image: sourabhsingh/sprint-boot-app
         resources:
           requests:
-            cpu: "300m"
+            cpu: "400m"
             memory: "256Mi"
           limits:
             cpu: "600m"
